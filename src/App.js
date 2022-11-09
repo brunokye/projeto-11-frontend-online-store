@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     listItems: [],
     item: '',
-    foundItems: false,
+    foundItems: true,
   };
 
   handleValue = (event) => {
@@ -17,7 +17,7 @@ class App extends Component {
     this.setState({ item: value });
   };
 
-  handleClick = async () => {
+  handleSearchClick = async () => {
     const { item } = this.state;
     const data = await getProductsFromCategoryAndQuery(null, item);
 
@@ -25,6 +25,7 @@ class App extends Component {
       this.setState({
         foundItems: false,
         item: '',
+        listItems: [],
       });
     } else {
       this.setState({
@@ -35,12 +36,20 @@ class App extends Component {
     }
   };
 
+  handleCategoryClick = async (event) => {
+    const { value } = event.target;
+    const data = await getProductsFromCategoryAndQuery(value, null);
+    this.setState({
+      listItems: data.results,
+    });
+  };
+
   render() {
     const { listItems, item, foundItems } = this.state;
 
     return (
       <div className="appContainer">
-        <Categories />
+        <Categories onClick={ this.handleCategoryClick } />
         <div>
           <input
             data-testid="query-input"
@@ -51,7 +60,7 @@ class App extends Component {
           <button
             data-testid="query-button"
             type="button"
-            onClick={ this.handleClick }
+            onClick={ this.handleSearchClick }
           >
             Pequisar
           </button>
