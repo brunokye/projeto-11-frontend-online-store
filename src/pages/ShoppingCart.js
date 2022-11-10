@@ -30,7 +30,7 @@ export default class ShoppingCart extends Component {
     return (
       <div data-testid="shopping-cart-empty-message">
         {
-          cart.length > 0
+          cart
             ? cart.map((item) => (
               <div key={ item.id } className="product-container">
                 <button
