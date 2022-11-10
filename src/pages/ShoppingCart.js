@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../style/ShoppingCart.css';
 
 export default class ShoppingCart extends Component {
   state = {
@@ -31,7 +32,7 @@ export default class ShoppingCart extends Component {
         {
           cart.length > 0
             ? cart.map((item) => (
-              <div key={ item.id }>
+              <div key={ item.id } className="product-container">
                 <button
                   data-testid="remove-product"
                   type="button"
@@ -42,7 +43,7 @@ export default class ShoppingCart extends Component {
                 </button>
                 <img src={ item.thumbnail } alt={ item.title } />
                 <p data-testid="shopping-cart-product-name">{item.title}</p>
-                <p>{item.price}</p>
+                <p>{`R$ ${item.price}`}</p>
                 <p data-testid="shopping-cart-product-quantity">{item.quantity}</p>
               </div>
             ))
