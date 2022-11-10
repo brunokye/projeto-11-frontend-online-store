@@ -24,15 +24,15 @@ export default class Home extends Component {
 
     if (data.results.length === 0) {
       this.setState({
-        foundItems: false,
-        item: '',
         listItems: [],
+        item: '',
+        foundItems: false,
       });
     } else {
       this.setState({
-        foundItems: true,
         listItems: data.results,
         item: '',
+        foundItems: true,
       });
     }
   };

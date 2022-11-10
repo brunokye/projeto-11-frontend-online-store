@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class ShoppingCart extends Component {
   render() {
     const cart = JSON.parse(localStorage.getItem('cart'));
-    console.log(cart);
     return (
       <div data-testid="shopping-cart-empty-message">
         {
