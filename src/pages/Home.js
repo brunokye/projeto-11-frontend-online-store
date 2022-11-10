@@ -4,6 +4,8 @@ import { getProductsFromCategoryAndQuery } from '../services/api';
 import Categories from '../components/Categories';
 import SearchItem from '../components/SearchItem';
 
+import '../style/Home.css';
+
 export default class Home extends Component {
   state = {
     listItems: [],
@@ -63,21 +65,25 @@ export default class Home extends Component {
           >
             Pequisar
           </button>
-          {
-            listItems.length !== 0 ? null : (
-              <p data-testid="home-initial-message">
-                Digite algum termo de pesquisa ou escolha uma categoria.
-              </p>
-            )
-          }
-
-          {
-            foundItems
-              ? listItems.map(({ id, title }) => (
-                <SearchItem key={ id } title={ title } />
+          {listItems.length !== 0 ? null : (
+            <p data-testid="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </p>
+          )}
+          <div className="productsContainer">
+            {foundItems ? (
+              listItems.map(({ id, title, thumbnail, price }) => (
+                <SearchItem
+                  key={ id }
+                  title={ title }
+                  thumbnail={ thumbnail }
+                  price={ price }
+                />
               ))
-              : <p>Nenhum produto foi encontrado</p>
-          }
+            ) : (
+              <p>Nenhum produto foi encontrado</p>
+            )}
+          </div>
         </div>
 
         <Link
