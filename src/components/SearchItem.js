@@ -8,6 +8,23 @@ export default class SearchItem extends Component {
   render() {
     const { title, thumbnail, price, id } = this.props;
 
+    handleAddCart = () => {
+      const cart = JSON.parse(localStorage.getItem('cart'));
+      const product = { id, title, thumbnail, price, quantity: 1 };
+      const productExists = cart.find((item) => item.id === id);
+      if (productExists) {
+        const newCart = cart.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+          return item;
+        });
+        localStorage.setItem('cart', JSON.stringify(newCart));
+      } else {
+        localStorage.setItem('cart', JSON.stringify([...cart, product]));
+      }
+    };
+
     return (
       <div
         data-testid="product"
@@ -28,7 +45,12 @@ export default class SearchItem extends Component {
             R$
             {price}
           </h2>
-          <button type="button">Adicionar ao carrinho</button>
+          <button
+            type="button"
+            onClick={ handleAddCart }
+          >
+            Adicionar ao carrinho
+          </button>
         </div>
       </div>
     );
