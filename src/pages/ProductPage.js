@@ -29,7 +29,7 @@ function ProductPage() {
       getProductById(id).then((response) => setData(response));
     };
     fetchProduct();
-  });
+  }, []);
 
   return (
     <div>
