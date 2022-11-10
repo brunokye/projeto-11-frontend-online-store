@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default class SearchItem extends Component {
   handleAddCart = () => {
-    const { title, thumbnail, price, id } = this.props;
+    const { id, title, thumbnail, price } = this.props;
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const product = { id, title, thumbnail, price, quantity: 1 };
     const productExists = cart.find((item) => item.id === id);
@@ -31,8 +31,8 @@ export default class SearchItem extends Component {
         className="itemContainer"
       >
         <Link
-          to={ `/product/${id}` }
           data-testid="product-detail-link"
+          to={ `/product/${id}` }
         >
           {title}
         </Link>
@@ -46,11 +46,11 @@ export default class SearchItem extends Component {
             {price}
           </h2>
           <button
+            data-testid="product-add-to-cart"
             type="button"
             onClick={ this.handleAddCart }
-            data-testid="product-add-to-cart"
           >
-            Adicionar ao carrinho
+            Adicionar ao Carrinho
           </button>
         </div>
       </div>
@@ -59,8 +59,8 @@ export default class SearchItem extends Component {
 }
 
 SearchItem.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   thumbnail: PropTypes.string,
   price: PropTypes.number,
-  id: PropTypes.string,
 }.isRequired;

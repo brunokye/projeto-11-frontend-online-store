@@ -4,9 +4,7 @@ import { getProductById } from '../services/api';
 
 function ProductPage() {
   const { id } = useParams();
-
   const [data, setData] = useState({});
-
   const { title, thumbnail, price, attributes } = data;
 
   const handleAddCart = () => {
