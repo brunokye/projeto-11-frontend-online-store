@@ -25,7 +25,6 @@ export default class SearchItem extends Component {
 
   render() {
     const { title, thumbnail, price, id } = this.props;
-
     return (
       <div
         data-testid="product"
