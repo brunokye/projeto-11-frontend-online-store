@@ -9,6 +9,23 @@ function ProductPage() {
 
   const { title, thumbnail, price, attributes } = data;
 
+  const handleAddCart = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const product = { id, title, thumbnail, price, quantity: 1 };
+    const productExists = cart.find((item) => item.id === id);
+    if (productExists) {
+      const newCart = cart.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    } else {
+      localStorage.setItem('cart', JSON.stringify([...cart, product]));
+    }
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       getProductById(id).then((response) => setData(response));
@@ -45,6 +62,13 @@ function ProductPage() {
               </li>
             ))}
         </ul>
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ handleAddCart }
+        >
+          Adicionar ao Carrinho
+        </button>
       </div>
     </div>
   );
