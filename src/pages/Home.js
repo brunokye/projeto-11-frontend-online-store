@@ -78,6 +78,7 @@ export default class Home extends Component {
                   title={ title }
                   thumbnail={ thumbnail }
                   price={ price }
+                  id={ id }
                 />
               ))
             ) : (
