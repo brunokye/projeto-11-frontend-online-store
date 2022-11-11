@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 
 export default class SearchItem extends Component {
   handleAddCart = () => {
-    const { id, title, thumbnail, price } = this.props;
+    const { title, thumbnail, price, id, availableQuantity } = this.props;
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const product = { id, title, thumbnail, price, quantity: 1 };
+    const product = { id, title, thumbnail, price, quantity: 1, availableQuantity };
     const productExists = cart.find((item) => item.id === id);
     if (productExists) {
       const newCart = cart.map((item) => {
