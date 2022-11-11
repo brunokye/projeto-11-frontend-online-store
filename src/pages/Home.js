@@ -72,15 +72,24 @@ export default class Home extends Component {
           )}
           <div className="productsContainer">
             {foundItems ? (
-              listItems.map(({ id, title, thumbnail, price }) => (
-                <SearchItem
-                  key={ id }
-                  title={ title }
-                  thumbnail={ thumbnail }
-                  price={ price }
-                  id={ id }
-                />
-              ))
+              listItems.map(
+                ({
+                  id,
+                  title,
+                  thumbnail,
+                  price,
+                  available_quantity: availableQuantity,
+                }) => (
+                  <SearchItem
+                    key={ id }
+                    title={ title }
+                    thumbnail={ thumbnail }
+                    price={ price }
+                    id={ id }
+                    availableQuantity={ availableQuantity }
+                  />
+                ),
+              )
             ) : (
               <p>Nenhum produto foi encontrado</p>
             )}

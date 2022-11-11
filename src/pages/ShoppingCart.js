@@ -40,7 +40,7 @@ export default class ShoppingCart extends Component {
     const { id } = target;
     const { cart } = this.state;
     cart.filter((item) => {
-      if (item.id === id) {
+      if (item.id === id && item.quantity < item.availableQuantity) {
         item.quantity += 1;
       }
       return item;

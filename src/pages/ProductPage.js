@@ -5,11 +5,17 @@ import { getProductById } from '../services/api';
 function ProductPage() {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const { title, thumbnail, price, attributes } = data;
+  const {
+    title,
+    thumbnail,
+    price,
+    attributes,
+    available_quantity: availableQuantity,
+  } = data;
 
   const handleAddCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const product = { id, title, thumbnail, price, quantity: 1 };
+    const product = { id, title, thumbnail, price, quantity: 1, availableQuantity };
     const productExists = cart.find((item) => item.id === id);
     if (productExists) {
       const newCart = cart.map((item) => {
