@@ -10,6 +10,7 @@ export default class SearchItem extends Component {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const product = { id, title, thumbnail, price, quantity: 1, availableQuantity };
     const productExists = cart.find((item) => item.id === id);
+
     if (productExists) {
       const newCart = cart.map((item) => {
         if (item.id === id) {
@@ -25,6 +26,7 @@ export default class SearchItem extends Component {
 
   render() {
     const { title, thumbnail, price, id } = this.props;
+
     return (
       <div
         data-testid="product"
@@ -36,6 +38,7 @@ export default class SearchItem extends Component {
         >
           {title}
         </Link>
+
         <div className="descContainer">
           <img
             src={ thumbnail }
@@ -45,6 +48,7 @@ export default class SearchItem extends Component {
             R$
             {price}
           </h2>
+
           <button
             data-testid="product-add-to-cart"
             type="button"

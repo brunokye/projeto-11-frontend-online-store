@@ -40,6 +40,7 @@ export default class Home extends Component {
   handleCategoryClick = async (event) => {
     const { value } = event.target;
     const data = await getProductsFromCategoryAndQuery(value, null);
+
     this.setState({
       listItems: data.results,
     });
@@ -51,6 +52,7 @@ export default class Home extends Component {
     return (
       <div className="appContainer">
         <Categories onClick={ this.handleCategoryClick } />
+
         <div>
           <input
             data-testid="query-input"
@@ -65,11 +67,13 @@ export default class Home extends Component {
           >
             Pequisar
           </button>
+
           {listItems.length !== 0 ? null : (
             <p data-testid="home-initial-message">
               Digite algum termo de pesquisa ou escolha uma categoria.
             </p>
           )}
+
           <div className="productsContainer">
             {foundItems ? (
               listItems.map(

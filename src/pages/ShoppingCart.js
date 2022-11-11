@@ -27,24 +27,28 @@ export default class ShoppingCart extends Component {
   handleDecrement = ({ target }) => {
     const { id } = target;
     const { cart } = this.state;
+
     cart.filter((item) => {
       if (item.id === id && item.quantity > 1) {
         item.quantity -= 1;
       }
       return item;
     });
+
     this.setState({ cart });
   };
 
   handleIncrement = ({ target }) => {
     const { id } = target;
     const { cart } = this.state;
+
     cart.filter((item) => {
       if (item.id === id && item.quantity < item.availableQuantity) {
         item.quantity += 1;
       }
       return item;
     });
+
     this.setState({ cart });
   };
 
@@ -53,7 +57,7 @@ export default class ShoppingCart extends Component {
 
     return (
       <div data-testid="shopping-cart-empty-message">
-        {cart
+        { cart
           ? cart.map((item) => (
             <div
               key={ item.id }
@@ -92,7 +96,7 @@ export default class ShoppingCart extends Component {
               </button>
             </div>
           ))
-          : 'Seu carrinho está vazio'}
+          : 'Seu carrinho está vazio' }
       </div>
     );
   }
