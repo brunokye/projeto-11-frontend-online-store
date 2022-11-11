@@ -43,7 +43,6 @@ export default class ShoppingCart extends Component {
       if (item.id === id && item.quantity < item.availableQuantity) {
         item.quantity += 1;
       }
-      console.log(item.availableQuantity);
       return item;
     });
     this.setState({ cart });
