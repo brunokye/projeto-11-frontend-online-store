@@ -17,6 +17,7 @@ function ProductPage() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const product = { id, title, thumbnail, price, quantity: 1, availableQuantity };
     const productExists = cart.find((item) => item.id === id);
+
     if (productExists) {
       const newCart = cart.map((item) => {
         if (item.id === id) {
@@ -47,6 +48,7 @@ function ProductPage() {
           Carrinho
         </Link>
       </div>
+
       <div>
         <h1 data-testid="product-detail-name">{title}</h1>
         <img
