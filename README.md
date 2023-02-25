@@ -11,9 +11,9 @@ A partir dessas demandas, teremos uma aplicação em que pessoas usuárias poder
 
 ## Projeto
 
-<div align="center" display="inline">
-<img src="https://i.imgur.com/rWOeoFV.png" alt="Pesquisa" width="400px" heigth="209px">
-<img src="https://i.imgur.com/eCp47ZG.png" alt="Carrinho" width="400px" heigth="209px">
+<div align="center">
+  <img src="https://i.imgur.com/rWOeoFV.png" alt="Pesquisa" width="400px" />
+  <img src="https://i.imgur.com/eCp47ZG.png" alt="Carrinho" width="400px" />
 </div>
 
 ## Executar Localmente
